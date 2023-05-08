@@ -41,25 +41,25 @@ contract Struct1 {
 }   
 
 contract Struct2 {
-// 1. 이름, 번호, 생년월일을 담은 student라는 구조체와
+    // 1. 이름, 번호, 생년월일을 담은 student라는 구조체와
     struct Student {
         string name;
         uint number;
         uint birthday;
     }
 
-// 제목, 번호, 날짜를 담은 class라는 구조체를 선언하시오.
+    // 제목, 번호, 날짜를 담은 class라는 구조체를 선언하시오.
     struct Class {
         string title;
         uint number;
         uint date;
     }
 
-// 2. student형 변수 s 와 class형 변수 c를 선언하시오.
+    // 2. student형 변수 s 와 class형 변수 c를 선언하시오.
     Student S;
     Class C;
 
-// 3. s에 값을 부여하는 함수 setS와 c에 값을 부여하는 함수 setC를 각각 구현하시오
+    // 3. s에 값을 부여하는 함수 setS와 c에 값을 부여하는 함수 setC를 각각 구현하시오
     function setS(string memory _name, uint _number, uint _birthday) public {
         S = Student(_name, _number, _birthday);
     }
@@ -68,7 +68,7 @@ contract Struct2 {
         C = Class(_title, _number, _date);
     }
 
-// 4. 변수 s의 값을 반환받는 함수 getS와 c의 값을 반환받는 함수 getC를 각각 구현하시오.
+    // 4. 변수 s의 값을 반환받는 함수 getS와 c의 값을 반환받는 함수 getC를 각각 구현하시오.
     function getS() public view returns(Student memory) {
         return S;
     }
@@ -77,17 +77,51 @@ contract Struct2 {
         return C;
     }
 
-// 5. student형 변수들이 들어가는 array students와 class형 변수들이 들어가는 array classes를 선언하시오.
+    // 5. student형 변수들이 들어가는 array students와 class형 변수들이 들어가는 array classes를 선언하시오.
     Student[] students;
     Class[] classes;
 
-// 6. students에 student 구조체를 넣는 pushStudent 함수를 구현하세요.
+    // 6. students에 student 구조체를 넣는 pushStudent 함수를 구현하세요.
     function pushStudent(string memory _name, uint _number, uint _birthday) public {
         students.push(Student(_name, _number, _birthday));
     }
 
-// classes에 class 구조체를 넣는 pushClass 함수를 구현하세요.
+    // classes에 class 구조체를 넣는 pushClass 함수를 구현하세요.
     function pushClass(string memory _title, uint _number, uint _date) public {
         classes.push(Class(_title, _number, _date));
+    }
+}
+
+contract Mapping {
+    // 이름을 검색하면 그 아이의 키를 반환받는 contract를 구현하고 싶다.
+    mapping(string => uint) height;
+  
+    // 정보 넣기
+    function setHeight(string memory _name, uint _h) public {
+        height[_name] = _h;
+    }
+
+    // 정보 받기
+    function getHeight(string memory _name) public view returns(uint) {
+        return height[_name];
+    }
+    
+    // 정보 지우기
+    function deleteHeight(string memory _name) public {
+        delete height[_name];
+    }
+}
+
+contract Address {
+    address a;
+
+    // getAddress
+    function getAddress() public view returns(address) {
+        return address(this);
+    }
+
+    // getMyAddress
+    function getMyAddress() public view returns(address) {
+        return address(msg.sender);
     }
 }
