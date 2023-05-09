@@ -93,3 +93,76 @@ contract Struct2 {
         return Ds[_n-1];
     }
 }
+
+contract Address {
+
+    address a;
+
+    function getAddress() public view returns(address) {
+        return address(this);
+    }
+
+    function getMyAddress() public view returns(address) {
+        return address(msg.sender);
+    }
+
+    function getBalance() public view returns(uint) {
+        return address(this).balance;
+    }
+
+    function getMyBalance() public view returns(uint) {
+        return address(msg.sender).balance;
+    }
+
+
+    // function setA(address _a) public {
+    //     a = _a;
+    // }
+
+    // function setA2(bytes20 _a) public {
+    //     a = address(_a);
+    // }
+
+    // function getA() public view returns(address) {
+    //     return a;
+    // }
+
+    // function getA2() public view returns(bytes20){
+    //     return bytes20(a);
+    // }
+
+    function setA(address _a) public {
+        a = address(_a);
+    }
+
+    function setA2(bytes20 _a) public {
+        a = address(_a);
+    }
+
+    function getA() public view returns(address) {
+        return a;
+    }
+
+    function getA2() public view returns(bytes20) {
+        return bytes20(a);
+    }
+}
+
+contract Mapping {
+    mapping (uint => uint) a;
+    mapping (uint => string) b;
+    mapping (string => uint) height;
+
+    function setHeight(string memory _n, uint _h) public {
+        height[_n] = _h; 
+    }
+
+    //정보받기
+    function getHeight(string memory _n) public view returns(uint) {
+        return height[_n];
+    }
+
+    function deleteHeight(string memory _n) public {
+        delete height[_n];
+    }
+}
