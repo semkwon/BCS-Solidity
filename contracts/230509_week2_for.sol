@@ -149,16 +149,17 @@ contract ForLoop {
         return a;
     }
 
+    //숫자형 array d
     uint[] d;
-    
-    function pushd(uint _n) public {
+    //pushD
+    function pushD(uint _n) public {
         d.push(_n);
     }
-
+    //getD
     function getD() public view returns(uint[] memory) {
         return d;
     }
-
+    //d를 더해주는 forLoop
     function forLoop6() public view returns(uint) {
         uint a;
         for(uint i=0;i<d.length;i++) {
